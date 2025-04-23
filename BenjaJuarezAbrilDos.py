@@ -22,16 +22,15 @@ def ver_todas_las_tareas():
 def marcar_completada():
     ver_todas_las_tareas()
     if tareas:
-        numero = input("Número de la tarea a marcar como completada: ")
-        if numero.isdigit():
-            numero = int(numero)
+        try:
+            numero = int(input("Número de la tarea a eliminar: "))
             if 1 <= numero <= len(tareas):
-                tareas[numero - 1]["completada"] = True  # Marca la tarea como completada
-                print("Tarea marcada como completada.")
+                tarea_eliminada = tareas.pop(numero - 1)
+                print(f"Tarea completada y eliminada: {tarea_eliminada}")
             else:
                 print("Número fuera de rango.")
-        else:
-            print("Por favor, ingresa un número válido.")
+        except ValueError:
+            print("Entrada inválida. Debes escribir un número.")
 # --- Programa principal ---
 while True:
     mostar_menu()
